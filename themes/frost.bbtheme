@@ -1,29 +1,93 @@
-{
-    "name": "Frost DEV",
-    "author": "ThePinkHacker",
-    "borders": false,
-    "main_font": "Helvetica, Arial, sans-serif",
-    "headline_font": "Helvetica, Arial, sans-serif",
-    "code_font": "Menlo, Meslo, monospace",
-    "css": ":root {\n  --frost-radius: 8px;\n  --frost-shadow-size: 4px;\n  --frost-shadow-blur: 8px;\n  --frost-shadow-color: rgba(0, 0, 0, 0.25);\n}\n\nbody {\n  --menu-bar-height: fit-content;\n}\n\n/* Border Radius */\n.dialog,\n.dialog_handle, /* Dialog top draggable area */\n.menu_bar_point\n{\n  border-radius: var(--frost-radius);\n}\n\n/* Bottom Shadow */\n.dialog_handle {\n  box-shadow: var(--frost-shadow-color) 0 var(--frost-shadow-size) var(--frost-shadow-blur);\n}\n\n.menu_bar_point {\n  border: 4px solid var(--color-border);\n  margin: 4px;\n}\n\n.dialog_handle {\n  height: 3rem;\n}\n\n/* Fix box shadow from dialog_handle */\n.dialog_wrapper {\n  z-index: -1;\n}\n\nheader {\n  align-items: center;\n}\n\n* {\n  scrollbar-width: unset;\n}\n",
-    "thumbnail": ":root {\n  --frost-radius: 8px;\n}\n\n.theme_preview_menu,\n.theme_preview_menu_header {\n  border-radius: var(--frost-radius);\n}\n\n.theme_preview_menu {\n  background-color: var(--color-back);\n}\n\n.theme_preview_text {\n  background-color: var(--color-text);\n}",
-    "colors": {
-        "ui": "#282c34",
-        "back": "#21252b",
-        "dark": "#17191d",
-        "border": "#23252b",
-        "selected": "#474d5d",
-        "button": "#3a3f4b",
-        "bright_ui": "#f4f3ff",
-        "accent": "#3e90ff",
-        "frame": "#181a1f",
-        "text": "#cacad4",
-        "light": "#f4f3ff",
-        "accent_text": "#000006",
-        "bright_ui_text": "#000006",
-        "subtle_text": "#848891",
-        "grid": "#495061",
-        "wireframe": "#576f82",
-        "checkerboard": "#1c2026"
+/*
+id: frost
+name: Frost
+author: ThePinkHacker
+version: 2.0.0
+main_font: Helvetica, Arial, sans-serif
+headline_font: Helvetica, Arial, sans-serif
+code_font: Menlo, Meslo, monospace
+borders: false
+*/
+
+body {
+    --color-ui: #282c34;
+    --color-back: #21252b;
+    --color-dark: #17191d;
+    --color-border: #23252b;
+    --color-selected: #474d5d;
+    --color-button: #3a3f4b;
+    --color-bright_ui: #f4f3ff;
+    --color-accent: #3e90ff;
+    --color-frame: #181a1f;
+    --color-text: #cacad4;
+    --color-light: #f4f3ff;
+    --color-accent_text: #000006;
+    --color-bright_ui_text: #000006;
+    --color-subtle_text: #848891;
+    --color-grid: #495061;
+    --color-wireframe: #576f82;
+    --color-checkerboard: #1c2026;
+
+    --menu-bar-height: fit-content;
+}
+
+@scope (thumbnail) {
+    :root {
+        --frost-radius: 8px;
     }
+    
+    .theme_preview_menu,
+    .theme_preview_menu_header {
+        border-radius: var(--frost-radius);
+    }
+    
+    .theme_preview_menu {
+        background-color: var(--color-back);
+    }
+    
+    .theme_preview_text {
+        background-color: var(--color-text);
+    }
+}
+
+:root {
+    --frost-radius: 8px;
+    --frost-shadow-size: 4px;
+    --frost-shadow-blur: 8px;
+    --frost-shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Border Radius */
+.dialog,
+.dialog_handle, /* Dialog top draggable area */
+.menu_bar_point
+{
+    border-radius: var(--frost-radius);
+}
+
+/* Bottom Shadow */
+.dialog_handle {
+    box-shadow: var(--frost-shadow-color) 0 var(--frost-shadow-size) var(--frost-shadow-blur);
+}
+
+.menu_bar_point {
+    border: 4px solid var(--color-border);
+    margin: 4px;
+}
+
+.dialog_handle {
+    height: 3rem;
+}
+
+/* Fix box shadow from dialog_handle */
+.dialog_wrapper {
+    z-index: -1;
+}
+
+header {
+    align-items: center;
+}
+
+* {
+    scrollbar-width: unset;
 }
