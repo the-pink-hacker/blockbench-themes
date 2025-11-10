@@ -28,7 +28,6 @@ body {
     --color-wireframe: #576f82;
     --color-checkerboard: #1c2026;
 
-    --menu-bar-height: fit-content;
 }
 
 @scope (thumbnail) {
@@ -50,30 +49,60 @@ body {
     }
 }
 
+/* === Frost === */
+
+@font-face {
+    font-family: "Menslo";
+    src: url("https://github.com/uncon/MesloLGSNF-web-fonts/raw/874c562a09457f52242b36ba5f7f2a85557131de/fonts/MesloLGS-NF-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    --menu-bar-height: fit-content;
+}
+
 :root {
     --frost-radius: 8px;
     --frost-shadow-size: 4px;
     --frost-shadow-blur: 8px;
     --frost-shadow-color: rgba(0, 0, 0, 0.25);
+    --frost-background-blur: 8px;
+    --frost-background-opacity: 15%;
 }
 
-/* Border Radius */
-.dialog,
-.dialog_handle, /* Dialog top draggable area */
-.menu_bar_point
-{
-    border-radius: var(--frost-radius);
+*:not(.scroll_horizontal) {
+    scrollbar-width: unset;
 }
 
-/* Bottom Shadow */
-.dialog_handle {
-    box-shadow: var(--frost-shadow-color) 0 var(--frost-shadow-size) var(--frost-shadow-blur);
+/* === Header === */
+
+header {
+    align-items: center;
+}
+
+header > * {
+    height: unset;
 }
 
 .menu_bar_point {
     border: 4px solid var(--color-border);
     margin: 4px;
 }
+
+/* === End Header === */
+
+/* Border Radius */
+dialog,
+.dialog_handle, /* Dialog top draggable area */
+.menu_bar_point,
+.contextMenu
+{
+    border-radius: var(--frost-radius);
+}
+
+/* === Dialogs === */
 
 .dialog_handle {
     height: 3rem;
@@ -84,10 +113,54 @@ body {
     z-index: -1;
 }
 
-header {
-    align-items: center;
+/* === End Dialogs === */
+
+/* === Context Menu === */
+
+.contextMenu {
+    background: none;
+    color: var(--color-text);
 }
 
-* {
-    scrollbar-width: unset;
+/* Fixes rendering issue 
+
+Sub menus aren't blurred.
+
+The fix is to create a before psudo-element with every menu.
+Each before gets the blur while the menus are transparent.
+*/
+.contextMenu:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
+
+/* === End Context Menu === */
+
+/* === Shadow === */
+
+/* Bottom Shadow */
+.dialog_handle {
+    box-shadow: var(--frost-shadow-color) 0 var(--frost-shadow-size) var(--frost-shadow-blur);
+}
+
+/* All Shadow */
+dialog,
+.contextMenu {
+    box-shadow: var(--frost-shadow-color) 0 0 var(--frost-shadow-blur) var(--frost-shadow-size);
+}
+
+/* === End Shadow === */
+
+/* === Blur === */
+
+dialog,
+.contextMenu:before {
+    backdrop-filter: blur(var(--frost-background-blur));
+    background-color: rgba(var(--color-ui), var(--frost-background-opacity));
+}
+
+/* === End Blur === */
